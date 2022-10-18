@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=DynaPuff&family=Noto+Sans+Buhid&display=swap');
+
+.html {
+    font-size: 14px;
+}
+body {
+    font-family: 'Noto Sans', sans-serif;
+    background-color: rgba(12, 12, 12, 0.932);
+}
+.a {
+    text-decoration: none;
+}
+.carousel-item img {
+    object-fit:cover;
+    object-position: center;
+    height: 90vh;
+    overflow: hidden;
+}
+.old_price {
+    font-weight: bold;
+    color: red;
+}
+.new_price {
+    font-weight: bold;
+    color:green;
+    font-size:larger;
+}
+#latest_product{
+    font-size: medium;
+}
+.font_size {
+    font-size:smaller;
+}
+.pic-box {
+    position: relative;
+}
+.hot {
+    background-color: orangered;
+    color: white;
+    width: 75px;
+    line-height: 1;
+    position: absolute;
+    text-align:center;
+    text-transform: uppercase;
+    top: 22px;
+    margin-left: 17rem;
+    font-weight: bold;
+    min-width: 45px;
+    padding: 7px 10px;
+    border-radius: 5px;
+}

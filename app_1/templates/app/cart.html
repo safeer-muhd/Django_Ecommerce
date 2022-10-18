@@ -1,0 +1,74 @@
+{% extends 'app/layouts/main.html' %}
+{% block title %}
+Cart_collections
+{% endblock title %}
+{% block content %}
+
+<section class="bg-light py-4 my-5" style="min-height: 600px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h4 class="mb-3">Cart Items</h4>
+                <hr style="border-color: #b8bfc2;">
+            </div>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href=" {% url 'home' %} ">Home</a></li>
+                        <li class="breadcrumb-item"><a href=" {% url 'collection' %} ">Collections</a></li>
+                    </ol>
+                </nav>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card shadow">
+                                <div class="card-body cart_data_refresh_page">
+                                    {% if cart %}
+                                        {% for item in cart %}
+                                            <div class="row">
+                                                <div class="col-md-2 my-auto">
+                                                    <img src=" {{item.product.product_image.url}} " alt="image here" height="100px" width="100px">
+                                                </div>
+                                                <div class="col-md-2 my-auto">
+                                                    <h5> {{item.product.name}} </h5>
+                                                </div>
+                                                <div class="col-md-2 my-auto">
+                                                    <h6 class="new_price"> Rs.{{item.product.selling_price}} </h6>
+                                                </div>
+                                                <div class="col-md-1 my-auto">
+                                                    {{item.product_qty}}
+                                                </div>
+                                                <div class="col-md-1 my-auto">
+                                                    {{item.total_cost}}
+                                                </div>
+                                                <div class="col-md-2 my-auto">
+                                                    {% if item.product.quantity > 0 %}
+                                                    <label class="badge bg-success">In stock</label>
+                                                    {% else %}
+                                                    <label class="badge bg-danger">Out of stock</label>
+                                                    {% endif %}
+                                                </div>
+                                                <div class="col-md-2 my-auto">
+                                                    {% csrf_token %}
+                                                    <input type="hidden" value=" {{item.product.id}} " id="pid">
+                                                    <button class="btn btn-danger" id="Remove_btn"><i class="fa fa-trash"></i> Remove</button>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                        <hr>
+                                        <a href=" {% url 'checkout' %} " class="btn btn-outline-success">Checkout</a>
+                                    {% else %}
+                                        <h4>Your Cart is Empty</h4>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+
+
+        </div>
+    </div>
+</section>
+
+{% endblock content %}
